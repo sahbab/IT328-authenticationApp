@@ -14,3 +14,17 @@ Meteor.publish('userData', function(){
 		this.ready();//done
 	}
 });
+
+Accounts.onCreateUser( function(option, user){
+	
+	user.profile = option.profile;
+	user.profile.userType = 'basic_user';
+	user.profile.address = {
+		'street' : "",
+		'city' :"",
+		'state': "",
+		'zip':''
+	};
+	user.profile.siteVisited = 1;
+	
+});
